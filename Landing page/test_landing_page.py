@@ -22,24 +22,22 @@ class TestLandingPage:
             print("Successfully loaded page")
         self.driver.quit()
 
+    def mobile_no_enter_page(self, button_type):
+        enter_mobile_number = self.wait.until(
+            EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter your mobile number.']")))
+        if enter_mobile_number:
+            print(f'{button_type} button work')
+            self.driver.back()
+        else:
+            print(f'{button_type} button not work')
+            self.driver.back()
     def test_buttons_work(self):
         self.wait.until(EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Get Started']"))).click()
-        enter_mobile_number = self.wait.until(EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter your mobile number.']")))
-        if enter_mobile_number:
-            print("Get Started button work")
-            self.driver.back()
+        self.mobile_no_enter_page("Get Started")
         self.wait.until(EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Sign in']"))).click()
-        enter_mobile_number = self.wait.until(
-            EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter your mobile number.']")))
-        if enter_mobile_number:
-            print("Sign in button work")
-            self.driver.back()
+        self.mobile_no_enter_page("Sign in")
         self.wait.until(EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Sign up']"))).click()
-        enter_mobile_number = self.wait.until(
-            EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter your mobile number.']")))
-        if enter_mobile_number:
-            print("Sign up button work")
-            self.driver.back()
+        self.mobile_no_enter_page("Sign up")
         self.driver.quit()
 
 
