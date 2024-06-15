@@ -6,15 +6,16 @@ from selenium.webdriver.support import expected_conditions as EC
 import configuration.config
 
 
+@pytest.mark.usefixtures("setup_method")
 class TestLandingPage:
-    def setup_method(self):
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option("detach", True)
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
-        self.wait = WebDriverWait(self.driver, 10)
-        self.driver.get(configuration.config.BaseURL)
-        self.driver.maximize_window()
+    # def setup_method(self):
+    #     options = webdriver.ChromeOptions()
+    #     options.add_experimental_option("detach", True)
+    #     self.driver = webdriver.Chrome(options=options)
+    #     self.driver.implicitly_wait(10)
+    #     self.wait = WebDriverWait(self.driver, 20)
+    #     self.driver.get(configuration.config.BaseURL)
+    #     self.driver.maximize_window()
 
     def test_navigate_correct_page(self):
         get_started_btn = self.wait.until(EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Get Started']")))
