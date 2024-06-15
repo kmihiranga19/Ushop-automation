@@ -3,11 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import configuration.config
 
 
-@pytest.mark.usefixtures("setup_method")
+@pytest.mark.usefixtures("setup")
 class TestLandingPage:
+
     # def setup_method(self):
     #     options = webdriver.ChromeOptions()
     #     options.add_experimental_option("detach", True)
