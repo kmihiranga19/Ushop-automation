@@ -1,21 +1,15 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.remote.webdriver import WebDriver
 
 
 @pytest.mark.usefixtures("setup")
 class TestLandingPage:
-
-    # def setup_method(self):
-    #     options = webdriver.ChromeOptions()
-    #     options.add_experimental_option("detach", True)
-    #     self.driver = webdriver.Chrome(options=options)
-    #     self.driver.implicitly_wait(10)
-    #     self.wait = WebDriverWait(self.driver, 20)
-    #     self.driver.get(configuration.config.BaseURL)
-    #     self.driver.maximize_window()
+    driver: WebDriver
+    wait: WebDriverWait
 
     def test_navigate_correct_page(self):
         get_started_btn = self.wait.until(EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Get Started']")))
@@ -40,6 +34,7 @@ class TestLandingPage:
         self.mobile_no_enter_page("Sign in")
         self.mobile_no_enter_page("Sign up")
         self.driver.quit()
+
 
 
 
