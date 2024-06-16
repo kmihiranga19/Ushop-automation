@@ -18,4 +18,4 @@ def setup(request):
 
     yield
 
-    driver.quit()
+    # driver.quit()
